@@ -8,3 +8,5 @@
 util 放在 src/utils 目录下
 constant 放在 src/constants 目录下
 assets 放在 src/assets 目录下
+
+这是一个音乐卡片生成的应用程序，用户可以上传音乐专辑图片，音乐名称，音乐演唱者，来生成一个音乐卡片

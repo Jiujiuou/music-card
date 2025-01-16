@@ -9,17 +9,19 @@ import useStore from "@/store";
 import { timeToSeconds, secondsToTime } from "@/utils";
 import DefaultAlbumImg from "@/assets/image/default-album.png";
 
-const totalTime = "5:00";
-
 function Card() {
-  const { backgroundUrl, cardImageUrl } = useStore();
-  const totalSeconds = timeToSeconds(totalTime);
+  const { backgroundUrl, cardImageUrl, musicInfo } = useStore();
+  const totalSeconds = timeToSeconds(musicInfo.duration || "00:00");
   const progressRef = useRef(null);
-  const [currentSeconds, setCurrentSeconds] = useState(100);
+  const [currentSeconds, setCurrentSeconds] = useState(timeToSeconds(musicInfo.currentTime || "00:00"));
   const [volume, setVolume] = useState(80); // 音量默认80%
   const [isDragging, setIsDragging] = useState(false);
   const [isDraggingVolume, setIsDraggingVolume] = useState(false);
   const volumeRef = useRef(null);
+
+  useEffect(() => {
+    setCurrentSeconds(timeToSeconds(musicInfo.currentTime || "00:00"));
+  }, [musicInfo.currentTime]);
 
   // 计算左侧时间和剩余时间
   const currentTime = secondsToTime(currentSeconds);
@@ -188,8 +190,8 @@ function Card() {
           src={cardImageUrl || DefaultAlbumImg}
           alt=""
         />
-        <div className={styles.title}>是的 我有见过我的梦</div>
-        <div className={styles.author}>安溥 anpu</div>
+        <div className={styles.title}>{musicInfo.name || "未知歌曲"}</div>
+        <div className={styles.author}>{musicInfo.artist || "未知歌手"}</div>
         <div className={styles.progressBar}>
           <div
             ref={progressRef}
