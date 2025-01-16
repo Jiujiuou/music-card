@@ -6,8 +6,8 @@ import Next from "@/assets/image/Next.svg";
 import volumeLow from "@/assets/image/volumeLow.svg";
 import volumeHigh from "@/assets/image/volumeHigh.svg";
 import useStore from "@/store";
-import { DEFAULT_ALBUM_IMAGE } from "@/constants";
 import { timeToSeconds, secondsToTime } from "@/utils";
+import DefaultAlbumImg from "@/assets/image/default-album.png";
 
 const totalTime = "5:00";
 
@@ -185,7 +185,7 @@ function Card() {
       <div className={styles.card}>
         <img
           className={styles.img}
-          src={cardImageUrl || DEFAULT_ALBUM_IMAGE}
+          src={cardImageUrl || DefaultAlbumImg}
           alt=""
         />
         <div className={styles.title}>是的 我有见过我的梦</div>

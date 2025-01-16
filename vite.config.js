@@ -19,5 +19,7 @@ export default defineConfig({
       input: "template.html", // 更新后的入口文件
       main: "template.html", // 指定新的入口文件
     },
+    assetsInlineLimit: 0, // 禁用资源内联，确保图片等资源单独打包
   },
+  publicDir: "public", // 指定静态资源目录
 });
