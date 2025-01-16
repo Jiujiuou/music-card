@@ -13,7 +13,9 @@ function Card() {
   const { backgroundUrl, cardImageUrl, musicInfo } = useStore();
   const totalSeconds = timeToSeconds(musicInfo.duration || "00:00");
   const progressRef = useRef(null);
-  const [currentSeconds, setCurrentSeconds] = useState(timeToSeconds(musicInfo.currentTime || "00:00"));
+  const [currentSeconds, setCurrentSeconds] = useState(
+    timeToSeconds(musicInfo.currentTime || "00:00")
+  );
   const [volume, setVolume] = useState(80); // 音量默认80%
   const [isDragging, setIsDragging] = useState(false);
   const [isDraggingVolume, setIsDraggingVolume] = useState(false);
@@ -183,8 +185,9 @@ function Card() {
       style={
         backgroundUrl ? { backgroundImage: `url(${backgroundUrl})` } : undefined
       }
+      id="background"
     >
-      <div className={styles.card}>
+      <div className={styles.card} id="card">
         <img
           className={styles.img}
           src={cardImageUrl || DefaultAlbumImg}
